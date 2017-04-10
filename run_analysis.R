@@ -69,6 +69,8 @@ library(dplyr)
     
 ## Second, independent tidy data set with the average of each variable for each activity and each subject
     DataSetMeans<- aggregate(dataSetFinal[, 3:68], list(dataSetFinal$subject,dataSetFinal$activity), mean)
+    colnames(DataSetMeans)[1] <- "Subject"
+    colnames(DataSetMeans)[2] <- "Activity"
    
 ##Saving the final data set
-    write.table(dataSetFinal, file = "tidy_DataSet.txt", row.name = FALSE)
+    write.table(DataSetMeans, file = "tidy_DataSet.txt", row.name = FALSE)
